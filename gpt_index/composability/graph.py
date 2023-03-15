@@ -231,13 +231,10 @@ class ComposableGraph:
 
     def save_to_disk(self, save_path: str, **save_kwargs: Any) -> None:
         """Save to file.
-
         This method stores the index into a JSON file stored on disk.
-
         Args:
             save_path (str): The save_path of the file.
-
         """
-        index_string = self.save_to_string(**save_kwargs)
-        with open(save_path, "w") as f:
-            f.write(index_string)
+        json_data = self.save_to_string(**save_kwargs)
+        with open(save_path, "w", encoding="utf-8") as f:
+            f.write(json_data)
